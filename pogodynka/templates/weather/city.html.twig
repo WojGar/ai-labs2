@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weather in {{ location.city }}, {{ location.country }}{% endblock %}
+
+{% block body %}
+    <main>
+        <h1>Weather in {{ location.city }}, {{ location.country }}</h1>
+
+        <ul>
+            {% for measurement in measurements %}
+                <li>
+                    {{ measurement.measurementDate|date('d.m.Y') }}:
+                    {{ measurement.temperature }}°C,
+                    {{ measurement.pressure }} hPa,
+                    {{ measurement.humidity }}%
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock %}
