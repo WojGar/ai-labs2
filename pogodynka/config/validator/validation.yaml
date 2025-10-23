@@ -1,0 +1,82 @@
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank:
+                  message: "City name cannot be empty."
+                  groups: ['new', 'edit']
+            - Length:
+                  min: 2
+                  max: 255
+                  groups: ['new', 'edit']
+
+        country:
+            - NotBlank:
+                  message: "Country code is required."
+                  groups: ['new', 'edit']
+            - Length:
+                  min: 2
+                  max: 2
+                  exactMessage: "Country code must be exactly 2 letters (ISO code)."
+                  groups: ['new', 'edit']
+
+        latitude:
+            - NotBlank:
+                  message: "Latitude is required."
+                  groups: ['new', 'edit']
+            - Range:
+                  min: -90
+                  max: 90
+                  notInRangeMessage: "Latitude must be between -90 and 90."
+                  groups: ['new', 'edit']
+
+        longitude:
+            - NotBlank:
+                  message: "Longitude is required."
+                  groups: ['new', 'edit']
+            - Range:
+                  min: -180
+                  max: 180
+                  notInRangeMessage: "Longitude must be between -180 and 180."
+                  groups: ['new', 'edit']
+
+App\Entity\Measurement:
+    properties:
+        location:
+            - NotBlank:
+                  message: "You must select a location."
+                  groups: ['new', 'edit']
+
+        measurement_date:
+            - NotBlank:
+                  message: "Please provide the measurement date."
+                  groups: ['new', 'edit']
+
+        temperature:
+            - NotBlank:
+                  message: "Temperature cannot be empty."
+                  groups: ['new', 'edit']
+            - Range:
+                  min: -50
+                  max: 60
+                  notInRangeMessage: "Temperature must be between -50°C and 60°C."
+                  groups: ['new', 'edit']
+
+        humidity:
+            - NotBlank:
+                  message: "Humidity cannot be empty."
+                  groups: ['new', 'edit']
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: "Humidity must be between 0% and 100%."
+                  groups: ['new', 'edit']
+
+        pressure:
+            - NotBlank:
+                  message: "Pressure cannot be empty."
+                  groups: ['new', 'edit']
+            - Range:
+                  min: 800
+                  max: 1100
+                  notInRangeMessage: "Pressure must be between 800 and 1100 hPa."
+                  groups: ['new', 'edit']
