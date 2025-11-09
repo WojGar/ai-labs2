@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logowanie{% endblock %}
+
+{% block body %}
+    <h1>Logowanie</h1>
+
+    {% if error %}
+        <div style="color:red;">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+
+    <form action="{{ path('app_login') }}" method="post">
+        <div>
+            <label for="username">Login</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}">
+        </div>
+
+        <div>
+            <label for="password">Hasło</label>
+            <input type="password" id="password" name="_password">
+        </div>
+
+        <button type="submit">Zaloguj</button>
+    </form>
+{% endblock %}
