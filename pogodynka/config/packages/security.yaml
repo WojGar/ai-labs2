@@ -21,6 +21,8 @@ security:
                 check_path: app_login
             logout:
                 path: app_logout
+            login_throttling:
+                max_attempts: 2
     role_hierarchy:
         ROLE_USER:
             - ROLE_LOCATION_INDEX

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prognoza z Open-Meteo{% endblock %}
+
+{% block body %}
+    <h1>Prognoza z Open-Meteo</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.latitude) }}
+    {{ form_row(form.longitude) }}
+    <button type="submit">Pobierz</button>
+    {{ form_end(form) }}
+
+    {% if forecast %}
+        <h2>Wyniki</h2>
+
+        <table border="1">
+            <tr>
+                <th>Data</th>
+                <th>T max</th>
+                <th>T min</th>
+                <th>Opad</th>
+            </tr>
+
+            {% for i in range(0, forecast.daily.time|length - 1) %}
+                <tr>
+                    <td>{{ forecast.daily.time[i] }}</td>
+                    <td>{{ forecast.daily.temperature_2m_max[i] }}</td>
+                    <td>{{ forecast.daily.temperature_2m_min[i] }}</td>
+                    <td>{{ forecast.daily.precipitation_sum[i] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

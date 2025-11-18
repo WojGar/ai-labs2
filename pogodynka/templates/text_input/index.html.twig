@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formularz tekstowy{% endblock %}
+
+{% block body %}
+    <h1>Formularz tekstowy</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.text) }}
+    <button type="submit">Wyślij</button>
+    {{ form_end(form) }}
+
+    {% if submittedText is not empty %}
+        <h2>Odebrany tekst: Witam</h2>
+        <p>{{ submittedText }}</p>
+
+        <h2>Odebrany tekst (NIEbezpieczny – raw):</h2>
+        <p>{{ submittedText|raw }}</p>
+    {% endif %}
+{% endblock %}
